@@ -31,11 +31,15 @@ The empirical p-value is calculated as:
 
 ```text
 p = (1 + number of null replicates with S_null <= S_observed) / (B + 1)
-where B is the number of null replicates.
+```
+
+where `B` is the number of null replicates.
 
 A small p-value means that few matched random carrier sets produce an MRCA clade as small as the observed carrier set.
 
-Parameters used in the main analysis
+## Parameters used in the main analysis
+
+```text
 replicates per row:       1000
 frequency column:         info_AC
 position column:          query_pos
@@ -47,11 +51,15 @@ homozygote policy:        both
 p-value tail:             lower
 status filter:            ok
 tree exclusion policy:    strict exclusion of trees overlapping the center
+```
+
 Singleton insertions were skipped in the p-value calculation because local relatedness among carriers is not defined for a single carrier haplotype.
 
-Example commands
-Calculate observed S for chromosome 10:
+## Example commands
 
+Calculate observed `S` for chromosome 10:
+
+```bash
 python3 S_calculation.py \
   --tree-sequence ARG/chr10_HWE_region_filtered.trees \
   --vcf genomewide_source.ABBA.tiers_A-C.82_insertions.1000G_phased.vcf \
@@ -61,8 +69,11 @@ python3 S_calculation.py \
   --exclude-bp 200 \
   --homo-alt-policy both \
   --strict-exclude-overlapping-trees
+```
+
 Calculate nulls and p-values for chromosome 10:
 
+```bash
 python3 p_value.py \
   --tree-sequence ARG/chr10_HWE_region_filtered.trees \
   --observed-tsv all_autosomes.updated.vcf_phase_corrected_mrca.tsv \
@@ -82,10 +93,13 @@ python3 p_value.py \
   --seed 11 \
   --strict-exclude-overlapping-trees \
   --status-filter ok
-Requirements
+```
+
+## Requirements
+
 The scripts require Python 3 with:
 
+```text
 numpy
 tskit
-
-```text
+```
