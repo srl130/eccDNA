@@ -88,7 +88,4 @@ The scripts require Python 3 with:
 numpy
 tskit
 
-Then at the bottom of the GitHub page, write this commit message:
-
 ```text
-Add README for S and p-value analysis
